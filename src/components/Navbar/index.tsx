@@ -2,7 +2,7 @@ import { ShoppingCart } from "assets";
 import { Container, ToggleDarkMode } from "components";
 import { useDarkMode } from "hooks";
 import { Link } from "react-router-dom";
-import { NavbarWrapper, NavLinks, NavLogo } from "./Navbar.style";
+import { NavbarWrapper, NavLinks, NavLogo, NavLink } from "./Navbar.style";
 
 export default function Navbar() {
 	const { theme, toggleThemeHandler } = useDarkMode();
@@ -15,10 +15,10 @@ export default function Navbar() {
 				</NavLogo>
 				<NavLinks>
 					<li>
-						<Link to="/cart">
-							<img src={ShoppingCart} alt="Icon Cart" />
+						<NavLink to="/cart">
+							<img src={ShoppingCart} alt="Icon Cart" className="cart-icon" />
 							<span className="cart-text">$0.00</span>
-						</Link>
+						</NavLink>
 					</li>
 					<li>
 						<ToggleDarkMode onClick={toggleThemeHandler} darkMode={theme} />

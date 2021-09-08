@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const NavbarWrapper = styled.nav`
@@ -12,21 +13,22 @@ export const NavLinks = styled.ul`
 	li {
 		display: inline-block;
 		padding-right: 47px;
-		a {
-			display: inline-flex;
-			align-items: center;
-			text-decoration: none;
-			color: ${(props) => props.theme.textTertiary};
-			font-weight: 600;
+	}
+`;
 
-			> img {
-				height: 20px;
-			}
+export const NavLink = styled(Link)`
+	display: inline-flex;
+	align-items: center;
+	text-decoration: none;
+	color: ${(props) => props.theme.textTertiary};
+	font-weight: 600;
 
-			> .cart-text {
-				margin-left: 18px;
-			}
-		}
+	> .cart-icon {
+		height: 20px;
+	}
+
+	> .cart-text {
+		margin-left: 18px;
 	}
 `;
 
