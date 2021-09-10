@@ -7,7 +7,6 @@ export const HeroSection = styled.section`
 	justify-content: space-between;
 	align-items: center;
 	margin-top: 2rem;
-	transition: 0.25s;
 	gap: 50px;
 
 	.hero-image {
@@ -32,7 +31,6 @@ export const HeroText = styled.h1`
 	text-align: center;
 	margin-bottom: 22px;
 	line-height: 1.1em;
-	transition: 0.25s;
 
 	@media ${device.laptop} {
 		font-size: 48px;

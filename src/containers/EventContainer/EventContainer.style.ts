@@ -8,7 +8,7 @@ export const EventContainerWrapper = styled.section`
 	gap: 10px;
 	align-items: center;
 
-	@media ${device.tablet} {
+	@media ${device.laptop} {
 		align-items: flex-start;
 	}
 `;
