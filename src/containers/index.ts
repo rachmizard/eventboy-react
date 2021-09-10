@@ -1,1 +1,2 @@
-export { default as Hero } from "./Hero";
+export { default as HeroContainer } from "./HeroContainer";
+export { default as EventContainer } from "./EventContainer";

@@ -5,14 +5,14 @@ import {
 	HeroTextHightlight,
 	HeroDescription,
 	Wrapper,
-} from "./Hero.style";
+} from "./HeroContainer.style";
 import { Hero as HeroImage } from "assets";
 
-interface HeroProps {
+interface HeroContainerProps {
 	heroText?: string;
 }
 
-const Hero: React.FC<HeroProps> = () => {
+const HeroContainer: React.FC<HeroContainerProps> = () => {
 	return (
 		<HeroSection>
 			<Wrapper>
@@ -34,4 +34,4 @@ const Hero: React.FC<HeroProps> = () => {
 	);
 };
 
-export default Hero;
+export default HeroContainer;

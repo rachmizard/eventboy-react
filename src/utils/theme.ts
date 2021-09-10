@@ -1,10 +1,17 @@
 export interface ICustomizeTheme {
-	textPrimary: string;
-	textSecondary: string;
-	textTertiary: string;
-	borderPrimary: string;
-	borderSecondary: string;
-	body: string;
+	[key: string]: {
+		textPrimary: string;
+		textSecondary: string;
+		textTertiary: string;
+		textPurple: string;
+		borderPrimary: string;
+		borderSecondary: string;
+		body: string;
+		button: {
+			primary: string;
+			secondary: string;
+		};
+	};
 }
 
 export const colors = {
@@ -26,7 +33,7 @@ export const colors = {
 	},
 };
 
-export const myThemes = {
+export const myThemes: ICustomizeTheme = {
 	lightTheme: {
 		textPrimary: colors.black.default,
 		textSecondary: colors.white.default,
@@ -35,6 +42,10 @@ export const myThemes = {
 		borderPrimary: colors.grey[100],
 		borderSecondary: colors.grey[400],
 		body: colors.white.default,
+		button: {
+			primary: colors.purple.default,
+			secondary: colors.grey[100],
+		},
 	},
 	darkTheme: {
 		textPrimary: colors.white.default,
@@ -44,5 +55,9 @@ export const myThemes = {
 		borderPrimary: colors.grey[100],
 		borderSecondary: colors.grey[400],
 		body: colors.black[100],
+		button: {
+			primary: colors.purple.default,
+			secondary: colors.grey[100],
+		},
 	},
 };
