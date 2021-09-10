@@ -28,7 +28,7 @@ const HeroContainer: React.FC<HeroContainerProps> = () => {
 				</HeroDescription>
 			</Wrapper>
 			<div>
-				<img src={HeroImage} alt="Hero Images" />
+				<img src={HeroImage} alt="Hero Images" className="hero-image" />
 			</div>
 		</HeroSection>
 	);

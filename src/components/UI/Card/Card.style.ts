@@ -1,11 +1,16 @@
 import styled from "styled-components";
+import { device } from "utils/theme";
 
 export const CardWrapper = styled.div`
 	display: block;
 	border-radius: 10px;
 	margin: 18px 18px 18px 0px;
-	width: 230px;
+	width: 100%;
 	box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.1);
+
+	@media ${device.mobileL} {
+		width: 230px;
+	}
 `;
 
 export const CardCoverWrapper = styled.div`
