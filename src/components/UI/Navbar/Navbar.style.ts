@@ -32,12 +32,9 @@ export const NavLink = styled(Link)`
 	}
 `;
 
-export const NavLogo = styled.h1`
+export const NavLogo = styled(Link)`
 	font-size: 30px;
 	font-weight: bold;
-
-	a {
-		text-decoration: none;
-		color: ${(props) => props.theme.textPrimary};
-	}
+	text-decoration: none;
+	color: ${(props) => props.theme.textPrimary};
 `;

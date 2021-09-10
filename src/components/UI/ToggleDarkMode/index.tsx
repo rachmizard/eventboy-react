@@ -1,10 +1,7 @@
 import { Moon, Sun } from "assets";
 import React from "react";
+import { ToggleDarkModeProps } from "./ToggleDarkMode.interface";
 import { ToggleDarkModeButton } from "./ToggleDarkMode.style";
-
-interface ToggleDarkModeProps extends React.HTMLProps<HTMLButtonElement> {
-	darkMode: string | undefined;
-}
 
 const ToggleDarkMode: React.FC<ToggleDarkModeProps> = ({
 	onClick,

@@ -1,10 +1,7 @@
 import React from "react";
+import { TypographyProps } from "./Typography.interface";
 import { H1 } from "./Typography.style";
 
-interface HeadingProps {
-	size?: "sm" | "md" | "lg";
-}
-
-export const Heading: React.FC<HeadingProps> = ({ children, size }) => {
+export const Heading: React.FC<TypographyProps> = ({ children }) => {
 	return <H1>{children}</H1>;
 };

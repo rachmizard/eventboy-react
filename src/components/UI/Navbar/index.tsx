@@ -1,8 +1,7 @@
 import { ShoppingCart } from "assets";
 import { Container, ToggleDarkMode } from "components";
 import { useDarkMode } from "hooks";
-import { Link } from "react-router-dom";
-import { NavbarWrapper, NavLinks, NavLogo, NavLink } from "./Navbar.style";
+import { NavbarWrapper, NavLink, NavLinks, NavLogo } from "./Navbar.style";
 
 export default function Navbar() {
 	const { theme, toggleThemeHandler } = useDarkMode();
@@ -10,9 +9,7 @@ export default function Navbar() {
 	return (
 		<Container>
 			<NavbarWrapper>
-				<NavLogo>
-					<Link to="/">EventBoy</Link>
-				</NavLogo>
+				<NavLogo to="/">EventBoy</NavLogo>
 				<NavLinks>
 					<li>
 						<NavLink to="/cart">

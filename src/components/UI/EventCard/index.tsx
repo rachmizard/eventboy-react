@@ -1,15 +1,8 @@
 import { Button, Card } from "components";
 import React from "react";
 import { CardBody, CardCover } from "../Card";
+import { EventCardProps } from "./EventCard.interface";
 import { EventCardWrapper } from "./EventCard.style";
-
-interface EventCardProps {
-	imageUrl: string;
-	alt?: string;
-	title: string;
-	createdAt: string;
-	price: number;
-}
 
 const EventCard: React.FC<EventCardProps> = ({
 	imageUrl,

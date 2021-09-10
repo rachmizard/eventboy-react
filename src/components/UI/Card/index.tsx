@@ -1,11 +1,6 @@
 import React from "react";
+import { CardCoverProps, CardProps } from "./Card.interface";
 import { CardBodyWrapper, CardCoverWrapper, CardWrapper } from "./Card.style";
-
-interface CardProps extends React.HTMLProps<HTMLDivElement> {}
-
-interface CardCoverProps extends React.HTMLProps<HTMLImageElement> {
-	imageUrl: string;
-}
 
 const Card: React.FC<CardProps> = ({ children }) => {
 	return <CardWrapper>{children}</CardWrapper>;
