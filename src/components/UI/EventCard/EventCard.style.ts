@@ -8,5 +8,18 @@ export const EventCardWrapper = styled.div`
 	> .info {
 		display: flex;
 		flex-direction: column;
+		gap: 0.5em;
+		font-family: "Ubuntu", sans-serif;
+
+		h5 {
+			font-weight: bolder;
+			font-size: 16px;
+		}
+
+		p {
+			font-weight: lighter;
+			color: ${(props) => props.theme.textTertiary};
+			font-size: 14px;
+		}
 	}
 `;
