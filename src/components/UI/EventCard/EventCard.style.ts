@@ -17,6 +17,9 @@ export const EventCardWrapper = styled.div`
 		}
 
 		p {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.25rem;
 			font-weight: lighter;
 			color: ${(props) => props.theme.textTertiary};
 			font-size: 14px;

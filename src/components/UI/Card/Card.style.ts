@@ -9,7 +9,7 @@ export const CardWrapper = styled.div`
 	box-shadow: 0px 4px 50px rgba(0, 0, 0, 0.1);
 
 	@media ${device.mobileL} {
-		width: 230px;
+		width: 250px;
 	}
 `;
 

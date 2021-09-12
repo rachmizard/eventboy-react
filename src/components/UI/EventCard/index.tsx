@@ -3,6 +3,7 @@ import React from "react";
 import { CardBody, CardCover } from "../Card";
 import { EventCardProps } from "./EventCard.interface";
 import { EventCardWrapper } from "./EventCard.style";
+import { IoIosCalendar, IoIosCash } from "react-icons/io";
 
 const EventCard: React.FC<EventCardProps> = ({
 	imageUrl,
@@ -18,8 +19,14 @@ const EventCard: React.FC<EventCardProps> = ({
 				<EventCardWrapper>
 					<div className="info">
 						<h5>{title}</h5>
-						<p>{createdAt}</p>
-						<p>{price}</p>
+						<p>
+							<IoIosCalendar size={20} />
+							{createdAt}
+						</p>
+						<p>
+							<IoIosCash />
+							{price}
+						</p>
 					</div>
 					<div className="action">
 						<Button variant="primary" buttonSize="sm">
