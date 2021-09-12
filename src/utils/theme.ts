@@ -7,6 +7,10 @@ export interface ICustomizeTheme {
 		borderPrimary: string;
 		borderSecondary: string;
 		body: string;
+		input: {
+			text: string;
+			background: string;
+		};
 		button: {
 			primary: string;
 			secondary: string;
@@ -63,6 +67,10 @@ export const myThemes: ICustomizeTheme = {
 		borderPrimary: colors.grey[100],
 		borderSecondary: colors.grey[400],
 		body: colors.white.default,
+		input: {
+			text: colors.black.default,
+			background: colors.white.default,
+		},
 		button: {
 			primary: colors.purple.default,
 			secondary: colors.grey[100],
@@ -71,11 +79,15 @@ export const myThemes: ICustomizeTheme = {
 	darkTheme: {
 		textPrimary: colors.white.default,
 		textSecondary: colors.white.default,
-		textTertiary: colors.grey[100],
+		textTertiary: colors.white.default,
 		textPurple: colors.purple.default,
 		borderPrimary: colors.grey[100],
 		borderSecondary: colors.grey[400],
 		body: colors.black[100],
+		input: {
+			text: colors.white.default,
+			background: colors.black[100],
+		},
 		button: {
 			primary: colors.purple.default,
 			secondary: colors.grey[100],

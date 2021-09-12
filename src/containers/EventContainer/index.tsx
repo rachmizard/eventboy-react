@@ -3,12 +3,14 @@ import { EventCard, Heading } from "components";
 import React from "react";
 import { EventCardList, EventContainerWrapper } from "./EventContainer.style";
 
-interface EventContainerProps {}
+interface EventContainerProps {
+	title: string;
+}
 
-const EventContainer: React.FC<EventContainerProps> = () => {
+const EventContainer: React.FC<EventContainerProps> = ({ title }) => {
 	return (
 		<EventContainerWrapper>
-			<Heading>Most Popular</Heading>
+			<Heading>{title}</Heading>
 			<EventCardList>
 				{[0, 1, 2, 3].map((idx) => {
 					return (

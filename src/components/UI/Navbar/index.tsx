@@ -1,28 +1,24 @@
-import { Hamburger, ShoppingCart, Cross } from "assets";
 import { Container, ToggleDarkMode } from "components";
 import { useDarkMode } from "hooks";
 import { useState } from "react";
+import { IoIosCart, IoIosClose, IoIosMenu } from "react-icons/io";
 import {
+	CollapseDropDown,
 	NavbarWrapper,
 	NavItem,
 	NavLink,
 	NavLinks,
 	NavLogo,
-	CollapseDropDown,
 } from "./Navbar.style";
 
 export default function Navbar() {
 	const { theme, toggleThemeHandler } = useDarkMode();
 
-	const [iconCollapse, setIconCollapse] = useState(Hamburger);
+	const [collapse, setCollapse] = useState<boolean>();
 
 	function onToggleCollapseHandler() {
-		setIconCollapse((prevState) => {
-			if (prevState === Hamburger) {
-				return Cross;
-			}
-
-			return Hamburger;
+		setCollapse((prevState) => {
+			return !prevState;
 		});
 	}
 
@@ -33,7 +29,7 @@ export default function Navbar() {
 				<NavLinks>
 					<NavItem>
 						<NavLink to="/cart">
-							<img src={ShoppingCart} alt="Icon Cart" className="cart-icon" />
+							<IoIosCart size={24} />
 							<span className="cart-text">$0.00</span>
 						</NavLink>
 					</NavItem>
@@ -42,7 +38,7 @@ export default function Navbar() {
 					</NavItem>
 				</NavLinks>
 				<CollapseDropDown onClick={onToggleCollapseHandler}>
-					<img src={iconCollapse} width="32" height="32" alt="Icon Hamburger" />
+					{collapse ? <IoIosClose size={30} /> : <IoIosMenu size={30} />}
 				</CollapseDropDown>
 			</NavbarWrapper>
 		</Container>

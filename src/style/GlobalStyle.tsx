@@ -10,7 +10,7 @@ const GlobalStyle = createGlobalStyle<{ theme: ICustomizeTheme }>`
 
     body {
       background-color: ${(props) => props.theme.body};
-      transition: 0.25s ease-in-out;
+      transition: background 0.25s ease-in-out;
       font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
         sans-serif;
