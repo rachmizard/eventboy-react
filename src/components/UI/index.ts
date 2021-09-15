@@ -5,4 +5,5 @@ export { default as Button } from "./Button";
 export { default as SearchBar } from "./SearchBar";
 export { default as Divider } from "./Divider";
 export { default as Gap } from "./Gap";
+export { default as Modal } from "./Modal";
 export * from "./Typography";

@@ -6,10 +6,14 @@ export interface ICustomizeTheme {
 		textPurple: string;
 		borderPrimary: string;
 		borderSecondary: string;
+		borderTertiary: string;
 		body: string;
+		card: string;
 		input: {
 			text: string;
 			background: string;
+			border: string;
+			focus: string;
 		};
 		button: {
 			primary: string;
@@ -34,6 +38,9 @@ export const colors = {
 	},
 	purple: {
 		default: "#4227FD",
+	},
+	cyan: {
+		200: "#3FA5BC",
 	},
 };
 
@@ -66,10 +73,14 @@ export const myThemes: ICustomizeTheme = {
 		textPurple: colors.purple.default,
 		borderPrimary: colors.grey[100],
 		borderSecondary: colors.grey[400],
+		borderTertiary: colors.black[100],
 		body: colors.white.default,
+		card: colors.white.default,
 		input: {
 			text: colors.black.default,
 			background: colors.white.default,
+			border: colors.black.default,
+			focus: colors.cyan[200],
 		},
 		button: {
 			primary: colors.purple.default,
@@ -83,10 +94,14 @@ export const myThemes: ICustomizeTheme = {
 		textPurple: colors.purple.default,
 		borderPrimary: colors.grey[100],
 		borderSecondary: colors.grey[400],
+		borderTertiary: colors.white.default,
 		body: colors.black[100],
+		card: colors.black[100],
 		input: {
 			text: colors.white.default,
 			background: colors.black[100],
+			border: colors.white.default,
+			focus: colors.cyan[200],
 		},
 		button: {
 			primary: colors.purple.default,

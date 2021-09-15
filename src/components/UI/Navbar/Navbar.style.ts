@@ -16,7 +16,9 @@ export const NavLinks = styled.ul`
 	list-style: none;
 
 	@media ${device.tablet} {
-		display: block;
+		display: inline-flex;
+		flex-direction: row;
+		align-items: center;
 	}
 `;
 
@@ -32,12 +34,8 @@ export const NavLink = styled(Link)`
 	color: ${(props) => props.theme.textTertiary};
 	font-weight: 600;
 
-	> .cart-icon {
-		height: 20px;
-	}
-
-	> .cart-text {
-		margin-left: 18px;
+	> span {
+		margin-left: 13px;
 	}
 `;
 

@@ -8,6 +8,12 @@ const GlobalStyle = createGlobalStyle<{ theme: ICustomizeTheme }>`
       margin: 0;
     }
 
+    input,
+    texarea,
+    button {
+      appearance: none;
+    }
+
     body {
       background-color: ${(props) => props.theme.body};
       transition: background 0.25s ease-in-out;
