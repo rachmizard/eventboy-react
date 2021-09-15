@@ -48,6 +48,7 @@ export const FormWrapper = styled.div`
 
 	> .forgot-password {
 		align-self: flex-end;
+		margin-bottom: 10px;
 	}
 `;
 
