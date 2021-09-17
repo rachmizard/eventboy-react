@@ -3,12 +3,17 @@ import { Switch, Route, RouteProps } from "react-router-dom";
 
 const HomeLazyPage = React.lazy(() => import("./../pages/Home"));
 const NotFoundLazyPage = React.lazy(() => import("./../pages/NotFound404"));
+const RegisterLazyPage = React.lazy(() => import("./../pages/Register"));
 
 const routes: RouteProps[] = [
 	{
 		path: "/",
 		component: HomeLazyPage,
 		exact: true,
+	},
+	{
+		path: "/register",
+		component: RegisterLazyPage,
 	},
 	{
 		path: "*",

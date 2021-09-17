@@ -1,18 +1,14 @@
+import { Button, Form, Heading, Input } from "components";
+import { useModal } from "hooks";
 import React from "react";
+import { IoIosClose } from "react-icons/io";
+import { useHistory } from "react-router";
 import {
+	FormLink,
 	LoginBody,
 	LoginHeader,
 	LoginWrapper,
-	FormLink,
-	FormWrapper,
-	FormGroup,
-	Label,
-	Input,
 } from "./LoginContainer.style";
-import { IoIosClose } from "react-icons/io";
-import { useModal } from "hooks";
-import { Button, Heading } from "components";
-import { useHistory } from "react-router";
 
 const LoginContainer: React.FC = () => {
 	const { dismissModal } = useModal();
@@ -35,24 +31,27 @@ const LoginContainer: React.FC = () => {
 						Didn't have an account?
 					</FormLink>
 				</div>
-				<FormWrapper>
-					<FormGroup>
-						<Label htmlFor="email">Email</Label>
-						<Input id="email" placeholder="ex: zyan@gmail.com" />
-					</FormGroup>
-					<FormGroup>
-						<Label htmlFor="password">Password</Label>
-						<Input id="password" placeholder="Password" type="password" />
-					</FormGroup>
+				<Form>
+					<Form.Group>
+						<Input id="email" label="Email" placeholder="ex: zyan@gmail.com" />
+					</Form.Group>
+					<Form.Group>
+						<Input
+							id="password"
+							label="Password"
+							placeholder="Password"
+							type="password"
+						/>
+					</Form.Group>
 					<div className="forgot-password">
 						<FormLink to="/forgot-password">Forgot Password ?</FormLink>
 					</div>
-					<FormGroup>
+					<Form.Group>
 						<Button variant="primary" buttonSize="md">
 							Sign In
 						</Button>
-					</FormGroup>
-				</FormWrapper>
+					</Form.Group>
+				</Form>
 			</LoginBody>
 		</LoginWrapper>
 	);

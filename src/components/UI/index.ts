@@ -6,4 +6,7 @@ export { default as SearchBar } from "./SearchBar";
 export { default as Divider } from "./Divider";
 export { default as Gap } from "./Gap";
 export { default as Modal } from "./Modal";
+export { default as Form } from "./Form";
+export { default as Input } from "./Input";
+
 export * from "./Typography";

@@ -14,6 +14,7 @@ export interface ICustomizeTheme {
 			background: string;
 			border: string;
 			focus: string;
+			hasError: string;
 		};
 		button: {
 			primary: string;
@@ -41,6 +42,9 @@ export const colors = {
 	},
 	cyan: {
 		200: "#3FA5BC",
+	},
+	red: {
+		100: "#e31a17",
 	},
 };
 
@@ -81,6 +85,7 @@ export const myThemes: ICustomizeTheme = {
 			background: colors.white.default,
 			border: colors.black.default,
 			focus: colors.cyan[200],
+			hasError: colors.red[100],
 		},
 		button: {
 			primary: colors.purple.default,
@@ -102,6 +107,7 @@ export const myThemes: ICustomizeTheme = {
 			background: colors.black[100],
 			border: colors.white.default,
 			focus: colors.cyan[200],
+			hasError: colors.red[100],
 		},
 		button: {
 			primary: colors.purple.default,
