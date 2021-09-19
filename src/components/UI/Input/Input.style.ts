@@ -26,3 +26,7 @@ export const Label = styled.label`
 	font-weight: bold;
 	color: ${({ theme }) => theme.textTertiary};
 `;
+
+export const ErrorText = styled.small`
+	color: ${({ theme }) => theme.input.hasError};
+`;

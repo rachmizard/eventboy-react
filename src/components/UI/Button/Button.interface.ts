@@ -1,10 +1,13 @@
+import { ReactChild } from "react";
+
 enum EnumButtonSize {
 	sm,
 	md,
 }
 
-export interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
+export interface ButtonProps {
 	variant?: "primary" | "secondary";
 	buttonSize: EnumButtonSize | string;
-	children?: any;
+	children?: ReactChild;
+	type?: "submit" | "button";
 }

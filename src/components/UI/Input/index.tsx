@@ -1,7 +1,7 @@
-import React from "react";
-import { InputField, Label } from "./Input.style";
-import { InputProps } from "./Input.interface";
 import { useForm } from "hooks";
+import React from "react";
+import { InputProps } from "./Input.interface";
+import { ErrorText, InputField, Label } from "./Input.style";
 
 const Input: React.FC<InputProps> = ({
 	label,
@@ -9,21 +9,21 @@ const Input: React.FC<InputProps> = ({
 	hasError,
 	...otherProps
 }) => {
-	const { onSetField } = useForm();
-
-	function onChangeField(fieldName: any, value: any) {
-		onSetField(fieldName, value);
-	}
+	const { handleChange, touched, handleBlur, errors } = useForm();
 
 	return (
 		<>
 			<Label htmlFor={name}>{label}</Label>
 			<InputField
-				{...otherProps}
-				onChange={({ target }) => onChangeField(name, target.value)}
-				autoComplete="current-password"
+				id={name}
+				onChange={handleChange}
+				onBlur={handleBlur}
 				hasError={hasError}
+				{...otherProps}
 			/>
+			<ErrorText>
+				{name && touched[name] && errors[name] ? errors[name] : null}
+			</ErrorText>
 		</>
 	);
 };

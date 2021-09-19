@@ -1,23 +1,33 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { FormContext } from "contexts/FormContext";
 import { useContext, useEffect } from "react";
+import { AnySchema } from "yup";
 
-function useForm(fields?: any) {
-	const formContext = useContext(FormContext);
-
-	const setFields = (values: any) => {
-		formContext.setField(values);
-	};
+function useForm(initialized?: any, schemaError?: AnySchema | any) {
+	const {
+		values,
+		setValues,
+		errors,
+		touched,
+		handleChange,
+		handleSubmit,
+		handleBlur,
+		validationSchema,
+	} = useContext(FormContext);
 
 	useEffect(() => {
-		if (fields) {
-			setFields(fields);
-		}
+		validationSchema(schemaError);
+		setValues(initialized);
 	}, []);
 
 	return {
-		fields: formContext.fields,
-		onSetField: formContext.onSetField,
+		values,
+		errors,
+		touched,
+		setValues,
+		handleChange,
+		handleSubmit,
+		handleBlur,
 	};
 }
 

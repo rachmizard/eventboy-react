@@ -1,41 +1,66 @@
+import { FormikErrors, FormikTouched, useFormik } from "formik";
 import React, { createContext, useState } from "react";
+import { AnySchema, object } from "yup";
 
 interface IFormContext {
-	fields: any;
-	onSetField: (fieldName: string, value: any) => void;
-	setField: (fields: any) => void;
+	values: any;
+	errors: FormikErrors<{} | any>;
+	touched: FormikTouched<{} | any>;
+	setValues: (values: any) => void;
+	handleChange: (e: React.ChangeEvent<any>) => void;
+	handleSubmit: (e?: React.FormEvent<HTMLFormElement> | undefined) => void;
+	handleBlur: (e: React.FocusEvent<any>) => void;
+	validationSchema: (schema: AnySchema) => void;
 }
 
 export const FormContext = createContext<IFormContext>({
-	fields: {},
-	onSetField: () => {
-		//
-	},
-	setField: () => {
-		//
-	},
+	values: {},
+	errors: {},
+	touched: {},
+	setValues: () => {},
+	handleChange: () => {},
+	handleSubmit: () => {},
+	handleBlur: () => {},
+	validationSchema: () => {},
 });
 
 const FormProvider: React.FC = ({ children }) => {
-	const [fields, setFields] = useState({ fields: {} });
+	const [schemaValidation, setSchemaValidation] = useState<AnySchema>(
+		object({})
+	);
 
-	function onSetField(fieldName: string, value: any) {
-		setFields((prevState) => {
-			return {
-				fields: {
-					...prevState.fields,
-					[fieldName]: value,
-				},
-			};
-		});
-	}
+	const {
+		values,
+		setValues,
+		handleChange,
+		handleBlur,
+		handleSubmit,
+		errors,
+		touched,
+	} = useFormik({
+		initialValues: {},
+		validationSchema: schemaValidation,
+		onSubmit: (output) => {
+			alert(JSON.stringify(output));
+		},
+	});
 
-	function setField(values: any) {
-		setFields({ fields: values });
+	function validationSchema(schema: AnySchema | any) {
+		setSchemaValidation(schema);
 	}
 
 	return (
-		<FormContext.Provider value={{ fields, onSetField, setField }}>
+		<FormContext.Provider
+			value={{
+				values,
+				errors,
+				touched,
+				setValues,
+				handleChange,
+				handleSubmit,
+				handleBlur,
+				validationSchema,
+			}}>
 			{children}
 		</FormContext.Provider>
 	);
