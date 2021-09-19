@@ -1,24 +1,22 @@
 import { Hero } from "assets";
 import { Button, Container, Form, Gap, Heading, Input, Text } from "components";
-import { useForm } from "hooks";
+import { useFormik } from "formik";
 import React from "react";
 import { RegisterSchemaValidator } from "utils/validator";
-import { RegisterWrapper, RegisterForm } from "./Register.style";
+import { RegisterForm, RegisterWrapper } from "./Register.style";
 
 const Register: React.FC = () => {
-	const form = useForm(
-		{
+	const formik = useFormik({
+		initialValues: {
 			username: "",
 			email: "",
 			password: "",
 		},
-		RegisterSchemaValidator
-	);
-
-	function submitHandler(e: React.FormEvent<HTMLFormElement>) {
-		e.preventDefault();
-		form.handleSubmit(e);
-	}
+		validationSchema: RegisterSchemaValidator,
+		onSubmit: (values) => {
+			alert(JSON.stringify(values));
+		},
+	});
 
 	return (
 		<Container>
@@ -35,34 +33,59 @@ const Register: React.FC = () => {
 						<Gap height={24} />
 						<Text>Buy ticket concert anytime and anywhere !</Text>
 					</div>
-					<Form onSubmit={submitHandler}>
+					<Form onSubmit={formik.handleSubmit}>
 						<Form.Group>
 							<Input
+								id="username"
 								name="username"
 								label="Username"
 								placeholder="Your username.."
 								autoComplete="off"
-								value={form.values?.username || ""}
+								value={formik.values.username}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
+								hasError={
+									formik.touched.username && formik.errors.username
+										? true
+										: false
+								}
+								errorMessage={formik.errors.username}
 							/>
 						</Form.Group>
 						<Form.Group>
 							<Input
+								id="email"
 								name="email"
 								label="Email"
 								type="email"
 								placeholder="Your email, ex: abc@gmail.com"
 								autoComplete="current-email"
-								value={form.values?.email || ""}
+								value={formik.values.email}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
+								hasError={
+									formik.touched.email && formik.errors.email ? true : false
+								}
+								errorMessage={formik.errors.email}
 							/>
 						</Form.Group>
 						<Form.Group>
 							<Input
+								id="password"
 								name="password"
 								label="Password"
 								type="password"
 								placeholder="Your password.."
 								autoComplete="current-password"
-								value={form.values?.password || ""}
+								value={formik.values.password}
+								onChange={formik.handleChange}
+								onBlur={formik.handleBlur}
+								hasError={
+									formik.touched.password && formik.errors.password
+										? true
+										: false
+								}
+								errorMessage={formik.errors.password}
 							/>
 						</Form.Group>
 						<Form.Group>

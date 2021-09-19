@@ -1,5 +1,5 @@
 import { Layout } from "components";
-import { AppProvider, FormProvider, ModalProvider } from "contexts";
+import { AppProvider, ModalProvider } from "contexts";
 import { BrowserRouter as Router } from "react-router-dom";
 import { GlobalStyle } from "style/GlobalStyle";
 import { RootRouter } from "./router";
@@ -10,13 +10,11 @@ function App() {
 			<AppProvider>
 				<GlobalStyle />
 				<ModalProvider>
-					<FormProvider>
-						<Router>
-							<Layout>
-								<RootRouter />
-							</Layout>
-						</Router>
-					</FormProvider>
+					<Router>
+						<Layout>
+							<RootRouter />
+						</Layout>
+					</Router>
 				</ModalProvider>
 			</AppProvider>
 		</div>
