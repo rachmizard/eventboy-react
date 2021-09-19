@@ -1,18 +1,15 @@
-import { ModalContext } from "contexts/ModalContext";
-import React, { useCallback, useContext, useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { ModalProps } from "./Modal.interface";
 import { ModalDialog, ModalOverlay } from "./Modal.style";
 
-const Modal: React.FC<ModalProps> = ({ children, show }) => {
-	const modalContext = useContext(ModalContext);
-
+const Modal: React.FC<ModalProps> = ({ children, show, onDismissModal }) => {
 	const dismissModal = useCallback(() => {
-		modalContext?.dismissModal();
-	}, [modalContext]);
+		onDismissModal();
+	}, [onDismissModal]);
 
 	useEffect(() => {
 		function onEsc(event: KeyboardEvent) {
-			if (modalContext?.show) {
+			if (show) {
 				if (event.key === "Escape") dismissModal();
 			}
 		}
@@ -20,10 +17,10 @@ const Modal: React.FC<ModalProps> = ({ children, show }) => {
 		document.addEventListener("keyup", onEsc);
 
 		return () => document.removeEventListener("keyup", onEsc);
-	}, [dismissModal, modalContext]);
+	}, [dismissModal, show]);
 
 	return (
-		<ModalOverlay showModal={modalContext?.show}>
+		<ModalOverlay showModal={show}>
 			<ModalDialog>{children}</ModalDialog>
 		</ModalOverlay>
 	);

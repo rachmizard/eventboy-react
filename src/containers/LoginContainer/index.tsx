@@ -1,8 +1,10 @@
 import { Button, Form, Heading, Input } from "components";
-import { useModal } from "hooks";
+import { useFormik } from "formik";
 import React from "react";
 import { IoIosClose } from "react-icons/io";
 import { useHistory } from "react-router";
+import { LoginSchemaValidator } from "utils/validator";
+import { LoginContainerProps } from "./LoginContainer.interface";
 import {
 	FormLink,
 	LoginBody,
@@ -10,9 +12,19 @@ import {
 	LoginWrapper,
 } from "./LoginContainer.style";
 
-const LoginContainer: React.FC = () => {
-	const { dismissModal } = useModal();
+const LoginContainer: React.FC<LoginContainerProps> = ({ dismissModal }) => {
 	const history = useHistory();
+
+	const formik = useFormik({
+		initialValues: {
+			email: "",
+			password: "",
+		},
+		validationSchema: LoginSchemaValidator,
+		onSubmit: (values) => {
+			formik.resetForm({ values: { email: "", password: "" } });
+		},
+	});
 
 	function navigateToRegister() {
 		dismissModal();
@@ -31,9 +43,21 @@ const LoginContainer: React.FC = () => {
 						Didn't have an account?
 					</FormLink>
 				</div>
-				<Form>
+				<Form onSubmit={formik.handleSubmit}>
 					<Form.Group>
-						<Input id="email" label="Email" placeholder="ex: zyan@gmail.com" />
+						<Input
+							id="email"
+							label="Email"
+							placeholder="ex: zyan@gmail.com"
+							value={formik.values.email}
+							autoComplete="off"
+							onChange={formik.handleChange}
+							onBlur={formik.handleBlur}
+							hasError={
+								formik.touched.email && formik.errors.email ? true : false
+							}
+							errorMessage={formik.errors.email}
+						/>
 					</Form.Group>
 					<Form.Group>
 						<Input
@@ -41,13 +65,21 @@ const LoginContainer: React.FC = () => {
 							label="Password"
 							placeholder="Password"
 							type="password"
+							autoComplete="current-password"
+							value={formik.values.password}
+							onChange={formik.handleChange}
+							onBlur={formik.handleBlur}
+							hasError={
+								formik.touched.password && formik.errors.password ? true : false
+							}
+							errorMessage={formik.errors.password}
 						/>
 					</Form.Group>
 					<div className="forgot-password">
 						<FormLink to="/forgot-password">Forgot Password ?</FormLink>
 					</div>
 					<Form.Group>
-						<Button variant="primary" buttonSize="md">
+						<Button type="submit" variant="primary" buttonSize="md">
 							Sign In
 						</Button>
 					</Form.Group>

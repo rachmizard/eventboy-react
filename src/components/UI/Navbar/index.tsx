@@ -1,6 +1,6 @@
 import { Container, Modal, ToggleDarkMode } from "components";
 import { LoginContainer } from "containers";
-import { useDarkMode, useModal } from "hooks";
+import { useDarkMode } from "hooks";
 import { useState } from "react";
 import { IoIosCart, IoIosClose, IoIosMenu } from "react-icons/io";
 import {
@@ -14,7 +14,7 @@ import {
 
 export default function Navbar() {
 	const { theme, toggleThemeHandler } = useDarkMode();
-	const { show, onToggleModal } = useModal();
+	const [showModal, setShowModal] = useState<boolean>(false);
 
 	const [collapse, setCollapse] = useState<boolean>();
 
@@ -24,8 +24,19 @@ export default function Navbar() {
 		});
 	}
 
+	function onToggleModal() {
+		setShowModal((prevState) => !prevState);
+	}
+
+	function dismissModal() {
+		setShowModal(false);
+	}
+
 	return (
 		<Container>
+			<Modal show={showModal} onDismissModal={dismissModal}>
+				<LoginContainer dismissModal={dismissModal} />
+			</Modal>
 			<NavbarWrapper>
 				<NavLogo to="/">EventBoy</NavLogo>
 				<NavLinks>
@@ -48,9 +59,6 @@ export default function Navbar() {
 					{collapse ? <IoIosClose size={30} /> : <IoIosMenu size={30} />}
 				</CollapseDropDown>
 			</NavbarWrapper>
-			<Modal show={show}>
-				<LoginContainer />
-			</Modal>
 		</Container>
 	);
 }
