@@ -50,9 +50,10 @@ const LoginContainer: React.FC<LoginContainerProps> = ({ dismissModal }) => {
 							label="Email"
 							placeholder="ex: zyan@gmail.com"
 							value={formik.values.email}
+							name="email"
 							autoComplete="off"
+							onFocus={() => formik.setFieldTouched("email", true)}
 							onChange={formik.handleChange}
-							onBlur={formik.handleBlur}
 							hasError={
 								formik.touched.email && formik.errors.email ? true : false
 							}
@@ -67,11 +68,10 @@ const LoginContainer: React.FC<LoginContainerProps> = ({ dismissModal }) => {
 							type="password"
 							autoComplete="current-password"
 							value={formik.values.password}
+							name="password"
+							onFocus={() => formik.setFieldTouched("password", true)}
 							onChange={formik.handleChange}
-							onBlur={formik.handleBlur}
-							hasError={
-								formik.touched.password && formik.errors.password ? true : false
-							}
+							hasError={formik.errors.password ? true : false}
 							errorMessage={formik.errors.password}
 						/>
 					</Form.Group>
