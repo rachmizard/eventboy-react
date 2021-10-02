@@ -1,19 +1,19 @@
-import { Container, Divider, Gap, SearchBar } from "components";
+import { Container, Gap, SearchBar } from "components";
 import { EventContainer, HeroContainer } from "containers";
+import { popular } from "mocks/popular";
+import { upcoming } from "mocks/upcoming";
 import { RouteComponentProps } from "react-router";
 
 function Home(props: RouteComponentProps) {
-	return (
-		<Container>
-			<HeroContainer />
-			<SearchBar />
-			<EventContainer title="Most Popular events" />
-			<Gap height={68} />
-			<Divider position="horizontal" dividerSize={2} />
-			<Gap height={46} />
-			<EventContainer title="Upcoming events" />
-		</Container>
-	);
+    return (
+        <Container>
+            <HeroContainer />
+            <SearchBar />
+            <EventContainer events={popular} title="Most Popular events" />
+            <Gap height={28} />
+            <EventContainer events={upcoming} title="Upcoming events" />
+        </Container>
+    );
 }
 
 export default Home;

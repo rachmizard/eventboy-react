@@ -3,3 +3,7 @@ export { default as Event1 } from "./event-1.png";
 export { default as Event2 } from "./event-2.png";
 export { default as Event3 } from "./event-3.png";
 export { default as Event4 } from "./event-4.png";
+export { default as Event5 } from "./event-5.png";
+export { default as Event6 } from "./event-6.png";
+export { default as Event7 } from "./event-7.png";
+export { default as Event8 } from "./event-8.png";
