@@ -13,7 +13,7 @@ import {
 
 const SearchBar: React.FC = () => {
     const [toggleCalendar, setToggleCalendar] = useState<boolean>(false);
-    const [value, setValue] = useState<string>("");
+    const [formattedDate, setFormattedDate] = useState<string>("");
     const [defaultDate, setDefaultValue] = useState<Date>(new Date());
 
     function onToggleCalendarHandler() {
@@ -27,7 +27,7 @@ const SearchBar: React.FC = () => {
         const setFormatted = moment(setDate).format(FORMAT_DATE);
 
         setToggleCalendar(false);
-        setValue(setFormatted);
+        setFormattedDate(setFormatted);
     }
 
     return (
@@ -49,7 +49,7 @@ const SearchBar: React.FC = () => {
                 />
                 <InputText
                     type="text"
-                    value={value}
+                    value={formattedDate}
                     placeholder="Date"
                     readOnly
                 />
