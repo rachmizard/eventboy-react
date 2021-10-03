@@ -7,6 +7,7 @@ const Button: React.FC<ButtonProps> = ({
     variant,
     buttonSize,
     type,
+    loading,
     ...props
 }) => {
     if (variant === "primary") {
@@ -14,7 +15,8 @@ const Button: React.FC<ButtonProps> = ({
             <ButtonPrimary
                 buttonSize={buttonSize}
                 type={type}
-                onClick={props.onClick}>
+                onClick={props.onClick}
+                loading={loading}>
                 {children}
             </ButtonPrimary>
         );
@@ -25,14 +27,19 @@ const Button: React.FC<ButtonProps> = ({
             <ButtonSecondary
                 buttonSize={buttonSize}
                 type={type}
-                onClick={props.onClick}>
+                onClick={props.onClick}
+                loading={loading}>
                 {children}
             </ButtonSecondary>
         );
     }
 
     return (
-        <BaseButton buttonSize={buttonSize} type={type} onClick={props.onClick}>
+        <BaseButton
+            loading={loading}
+            buttonSize={buttonSize}
+            type={type}
+            onClick={props.onClick}>
             {children}
         </BaseButton>
     );

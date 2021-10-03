@@ -10,4 +10,5 @@ export interface ButtonProps extends HTMLProps<Partial<ButtonProps>> {
     buttonSize: EnumButtonSize | string;
     children?: ReactNode;
     type?: "submit" | "button";
+    loading?: boolean;
 }
