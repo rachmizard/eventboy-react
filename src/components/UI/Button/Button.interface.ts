@@ -1,13 +1,13 @@
-import { ReactChild } from "react";
+import { HTMLProps, ReactNode } from "react";
 
 enum EnumButtonSize {
-	sm,
-	md,
+    sm,
+    md,
 }
 
-export interface ButtonProps {
-	variant?: "primary" | "secondary";
-	buttonSize: EnumButtonSize | string;
-	children?: ReactChild;
-	type?: "submit" | "button";
+export interface ButtonProps extends HTMLProps<Partial<ButtonProps>> {
+    variant?: "primary" | "secondary";
+    buttonSize: EnumButtonSize | string;
+    children?: ReactNode;
+    type?: "submit" | "button";
 }
