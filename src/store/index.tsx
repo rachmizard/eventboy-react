@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, Action, Reducer } from "@reduxjs/toolkit";
 import { persistedConfig } from "config/redux";
 import {
     FLUSH,
@@ -12,7 +12,10 @@ import {
 } from "redux-persist";
 import reducers from "./reducers";
 
-const persistedReducer = persistReducer<any, any>(persistedConfig, reducers);
+const persistedReducer = persistReducer<any, Action>(
+    persistedConfig,
+    reducers
+) as Reducer;
 
 export const store = configureStore({
     reducer: persistedReducer,

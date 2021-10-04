@@ -2,7 +2,7 @@ import { Hero } from "assets";
 import { Button, Container, Form, Gap, Heading, Input, Text } from "components";
 import { useFormik } from "formik";
 import { useAppDispatch } from "hooks";
-import React from "react";
+import React, { useState } from "react";
 import { RouteComponentProps } from "react-router";
 import { signUpAsyncThunk } from "store/auth";
 import { RegisterSchemaValidator } from "utils/validator";
@@ -10,6 +10,7 @@ import { RegisterForm, RegisterWrapper } from "./Register.style";
 
 const Register: React.FC<RouteComponentProps> = ({ history }) => {
     const dispatch = useAppDispatch();
+    const [loading, setLoading] = useState<boolean>(false);
 
     const formik = useFormik({
         initialValues: {
@@ -20,10 +21,13 @@ const Register: React.FC<RouteComponentProps> = ({ history }) => {
         validationSchema: RegisterSchemaValidator,
         onSubmit: async (values) => {
             try {
-                dispatch(signUpAsyncThunk(values)).unwrap();
+                setLoading(true);
+                await dispatch(signUpAsyncThunk(values)).unwrap();
+                setLoading(false);
                 history.replace("/");
-            } catch (error) {
-                alert(error);
+            } catch (error: any) {
+                setLoading(false);
+                alert(error.message);
             }
         },
     });
@@ -102,12 +106,16 @@ const Register: React.FC<RouteComponentProps> = ({ history }) => {
                             />
                         </Form.Group>
                         <Form.Group>
-                            <Button
-                                type="submit"
-                                variant="primary"
-                                buttonSize="md">
-                                Sign Up
-                            </Button>
+                            {loading ? (
+                                <small>Sign Up...</small>
+                            ) : (
+                                <Button
+                                    type="submit"
+                                    variant="primary"
+                                    buttonSize="md">
+                                    Sign Up
+                                </Button>
+                            )}
                         </Form.Group>
                     </Form>
                 </RegisterForm>
