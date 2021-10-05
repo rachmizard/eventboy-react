@@ -16,7 +16,8 @@ const Button: React.FC<ButtonProps> = ({
                 buttonSize={buttonSize}
                 type={type}
                 onClick={props.onClick}
-                loading={loading}>
+                loading={loading}
+                style={props.style}>
                 {children}
             </ButtonPrimary>
         );
@@ -28,7 +29,8 @@ const Button: React.FC<ButtonProps> = ({
                 buttonSize={buttonSize}
                 type={type}
                 onClick={props.onClick}
-                loading={loading}>
+                loading={loading}
+                style={props.style}>
                 {children}
             </ButtonSecondary>
         );
@@ -39,7 +41,8 @@ const Button: React.FC<ButtonProps> = ({
             loading={loading}
             buttonSize={buttonSize}
             type={type}
-            onClick={props.onClick}>
+            onClick={props.onClick}
+            style={props.style}>
             {children}
         </BaseButton>
     );

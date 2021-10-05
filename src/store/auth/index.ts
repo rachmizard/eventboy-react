@@ -5,21 +5,30 @@ import { IAuthState } from "./interface";
 const initialState = {
     token: null,
     isLoggedIn: false,
+    user: {},
 } as IAuthState;
 
 export const signInAsyncThunk = createAsyncThunk(
     "auth/signIn",
-    async (payload: any, thunk) => {
-        const response = await signIn(payload);
-        return response;
+    async (payload: any, { rejectWithValue }) => {
+        try {
+            const response = await signIn(payload);
+            return response;
+        } catch (error: any) {
+            return rejectWithValue(error);
+        }
     }
 );
 
 export const signUpAsyncThunk = createAsyncThunk(
     "auth/signUp",
-    async (payload: any, thunk) => {
-        const response = await signUp(payload);
-        return response;
+    async (payload: any, { rejectWithValue }) => {
+        try {
+            const response = await signUp(payload);
+            return response;
+        } catch (error: any) {
+            return rejectWithValue(error);
+        }
     }
 );
 
@@ -36,10 +45,12 @@ const authSlice = createSlice({
         builder.addCase(signInAsyncThunk.fulfilled, (state, action) => {
             state.token = action.payload.token;
             state.isLoggedIn = !!action.payload.token;
+            state.user = action.payload.user;
         });
         builder.addCase(signUpAsyncThunk.fulfilled, (state, action) => {
             state.token = action.payload.token;
             state.isLoggedIn = !!action.payload.token;
+            state.user = action.payload.user;
         });
     },
 });

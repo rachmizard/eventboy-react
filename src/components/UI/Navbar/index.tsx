@@ -66,7 +66,7 @@ export default function Navbar() {
                             </NavLink>
                         ) : (
                             <NavLink to="#" onClick={onLogoutHandler}>
-                                Logout
+                                {auth.user?.name}
                             </NavLink>
                         )}
                     </NavItem>

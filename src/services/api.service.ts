@@ -31,7 +31,7 @@ export class ApiService {
     }
 
     handleError(error: any) {
-        return Promise.reject(error.response.data.message);
+        return Promise.reject(error.response.data);
     }
 
     get(
