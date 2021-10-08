@@ -1,8 +1,8 @@
-import { Container, Modal, ToggleDarkMode } from "components";
+import { Container, Dropdown, Modal, ToggleDarkMode } from "components";
 import { LoginContainer } from "containers";
 import { useAppDispatch, useAppSelector, useDarkMode } from "hooks";
 import { useState } from "react";
-import { IoIosCart, IoIosClose, IoIosMenu } from "react-icons/io";
+import { IoIosCart, IoIosClose, IoIosLogIn, IoIosMenu } from "react-icons/io";
 import { setLoggedOut } from "store/auth";
 import {
     CollapseDropDown,
@@ -62,12 +62,26 @@ export default function Navbar() {
                     <NavItem>
                         {!auth.isLoggedIn ? (
                             <NavLink to="#" onClick={onToggleModal}>
+                                <IoIosLogIn
+                                    size={24}
+                                    style={{ marginRight: "8px" }}
+                                />{" "}
                                 Login
                             </NavLink>
                         ) : (
-                            <NavLink to="#" onClick={onLogoutHandler}>
-                                {auth.user?.name}
-                            </NavLink>
+                            <>
+                                <Dropdown titleName={auth.user?.name}>
+                                    <Dropdown.Menu
+                                        to="/order-history"
+                                        title="Order History"
+                                    />
+                                    <Dropdown.Menu
+                                        to="#"
+                                        title="Logout"
+                                        onClick={onLogoutHandler}
+                                    />
+                                </Dropdown>
+                            </>
                         )}
                     </NavItem>
                 </NavLinks>

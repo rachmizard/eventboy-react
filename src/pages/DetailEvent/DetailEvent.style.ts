@@ -15,22 +15,10 @@ export const EventInfo = styled.div`
 `;
 
 export const EventPicture = styled.div`
-    width: 40%;
-    > img {
+    width: 455px;
+    > .event-picture {
         width: 100%;
         object-fit: contain;
-    }
-`;
-
-export const EventDescription = styled.div`
-    overflow-y: scroll;
-    height: 300px;
-    padding: 18px;
-    border: 1px solid ${(props) => props.theme.borderPrimary};
-    border-radius: 10px;
-
-    > p {
-        text-align: justify;
     }
 `;
 
@@ -45,6 +33,18 @@ export const EventPictures = styled.div`
         width: 117px;
         height: 117px;
         object-fit: fill;
+    }
+`;
+
+export const EventDescription = styled.div`
+    overflow-y: scroll;
+    height: 300px;
+    padding: 18px;
+    border: 1px solid ${(props) => props.theme.borderPrimary};
+    border-radius: 10px;
+
+    > p {
+        text-align: justify;
     }
 `;
 

@@ -18,7 +18,6 @@ const LoginContainer: React.FC<LoginContainerProps> = ({ dismissModal }) => {
     const history = useHistory();
     const dispatch = useAppDispatch();
     const [loading, setLoading] = useState(false);
-    const [successLoggedIn, setSuccessLoggedIn] = useState(false);
     const [error, setError] = useState({
         show: false,
         message: "",
@@ -41,8 +40,7 @@ const LoginContainer: React.FC<LoginContainerProps> = ({ dismissModal }) => {
                 .then(() => {
                     formik.resetForm({ values: { email: "", password: "" } });
                     setLoading(false);
-                    // dismissModal();
-                    setSuccessLoggedIn(true);
+                    dismissModal();
                 })
                 .catch((err) => {
                     setLoading(false);
@@ -135,9 +133,6 @@ const LoginContainer: React.FC<LoginContainerProps> = ({ dismissModal }) => {
                     </Form>
                 </LoginBody>
             </LoginWrapper>
-            <Toast show={successLoggedIn} onCloseToast={onCloseToastHandler}>
-                Successfully Logged In
-            </Toast>
             <Toast
                 show={error.show}
                 onCloseToast={onCloseToastHandler}

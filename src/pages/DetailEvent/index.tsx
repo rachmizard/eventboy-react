@@ -1,4 +1,4 @@
-import { Event1 } from "assets";
+import { Event1, Event2, Event3 } from "assets";
 import { Button, Container, Gap, Heading, Text } from "components";
 import { colors } from "utils/theme";
 import {
@@ -16,13 +16,11 @@ const DetailEvent = () => {
         <Container>
             <Wrapper>
                 <EventPicture>
-                    <img src={Event1} alt="" />
+                    <img className="event-picture" src={Event1} alt="" />
                     <EventPictures>
                         <img src={Event1} alt="" />
-                        <img src={Event1} alt="" />
-                        <img src={Event1} alt="" />
-                        <img src={Event1} alt="" />
-                        <img src={Event1} alt="" />
+                        <img src={Event2} alt="" />
+                        <img src={Event3} alt="" />
                     </EventPictures>
                 </EventPicture>
                 <EventInfo>
