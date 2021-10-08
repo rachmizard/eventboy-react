@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import { ICustomizeTheme } from "utils/theme";
 
-const GlobalStyle = createGlobalStyle<{ theme: ICustomizeTheme }>`
+const GlobalStyle = createGlobalStyle`
     * {
       box-sizing: border-box;
       padding: 0;

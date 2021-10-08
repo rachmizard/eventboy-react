@@ -1,3 +1,4 @@
 export interface GapProps {
-	height?: number;
+    height?: number;
+    width?: number;
 }
