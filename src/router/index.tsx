@@ -17,12 +17,12 @@ const routes: RouteProps[] | any[] = [
     {
         path: "/register",
         component: RegisterLazyPage,
-        roles: ["*", "guest"],
+        roles: ["guest"],
     },
     {
         path: "/event/:id",
         component: DetailEventLazyPage,
-        roles: ["user"],
+        roles: ["*"],
     },
     {
         path: "*",

@@ -6,6 +6,7 @@ const initialState = {
     token: null,
     isLoggedIn: false,
     user: {},
+    role: "guest",
 } as IAuthState;
 
 export const signInAsyncThunk = createAsyncThunk(
@@ -39,6 +40,8 @@ const authSlice = createSlice({
         setLoggedOut: (state) => {
             state.token = null;
             state.isLoggedIn = false;
+            state.user = {};
+            state.role = "guest";
         },
     },
     extraReducers: (builder) => {
@@ -46,11 +49,13 @@ const authSlice = createSlice({
             state.token = action.payload.token;
             state.isLoggedIn = !!action.payload.token;
             state.user = action.payload.user;
+            state.role = action.payload.user?.role;
         });
         builder.addCase(signUpAsyncThunk.fulfilled, (state, action) => {
             state.token = action.payload.token;
             state.isLoggedIn = !!action.payload.token;
             state.user = action.payload.user;
+            state.role = action.payload.user?.role;
         });
     },
 });
