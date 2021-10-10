@@ -1,31 +1,57 @@
 import { Event1, Event2, Event3 } from "assets";
-import { Button, Container, Gap, Heading, Text } from "components";
-import { colors } from "utils/theme";
 import {
-    EventAction,
-    EventDescription,
-    EventInfo,
-    EventPicture,
-    EventPictures,
-    Wrapper,
-} from "./DetailEvent.style";
-import { IoIosCart } from "react-icons/io";
+    Box,
+    Button,
+    Col,
+    Container,
+    Gap,
+    Heading,
+    Row,
+    Text,
+} from "components";
+import { IoIosCalendar, IoIosCart } from "react-icons/io";
+import { colors } from "utils/theme";
+import { EventDescription, EventPictures } from "./DetailEvent.style";
 
 const DetailEvent = () => {
     return (
         <Container>
-            <Wrapper>
-                <EventPicture>
-                    <img className="event-picture" src={Event1} alt="" />
+            <Row gap={52} justify="space-between">
+                <Col style={{ width: 455 }}>
+                    <img
+                        className="event-picture"
+                        src={Event1}
+                        alt="Event Pict"
+                        style={{ width: "100%", objectFit: "contain" }}
+                    />
                     <EventPictures>
                         <img src={Event1} alt="" />
                         <img src={Event2} alt="" />
                         <img src={Event3} alt="" />
                     </EventPictures>
-                </EventPicture>
-                <EventInfo>
-                    <div>
-                        <Heading>Tame Impala Bandung Concert 2021</Heading>
+                </Col>
+                <Col>
+                    <Box>
+                        <Row
+                            alignItems="center"
+                            justify="space-between"
+                            gap={10}>
+                            <Col>
+                                <Heading>
+                                    Tame Impala Bandung Concert 2021
+                                </Heading>
+                            </Col>
+                            <Col>
+                                <Text
+                                    style={{
+                                        display: "inline-flex",
+                                        alignItems: "center",
+                                        gap: 5,
+                                    }}>
+                                    <IoIosCalendar size={24} /> 23 september
+                                </Text>
+                            </Col>
+                        </Row>
                         <Gap height={20} />
                         <Text
                             style={{
@@ -96,18 +122,28 @@ const DetailEvent = () => {
                             </Text>
                         </EventDescription>
                         <Gap height={20} />
-                    </div>
-                    <EventAction>
-                        <Button type="button" buttonSize="md">
-                            <IoIosCart /> Add to cart
-                        </Button>
-                        <Gap width={14} />
-                        <Button type="button" buttonSize="md">
-                            Buy
-                        </Button>
-                    </EventAction>
-                </EventInfo>
-            </Wrapper>
+                    </Box>
+                    <Row gap={14} justify="flex-end">
+                        <Col>
+                            <Button
+                                type="button"
+                                buttonSize="md"
+                                style={{
+                                    display: "inline-flex",
+                                    alignItems: "center",
+                                    gap: 5,
+                                }}>
+                                <IoIosCart /> Add to cart
+                            </Button>
+                        </Col>
+                        <Col>
+                            <Button type="button" buttonSize="md">
+                                Buy
+                            </Button>
+                        </Col>
+                    </Row>
+                </Col>
+            </Row>
         </Container>
     );
 };
